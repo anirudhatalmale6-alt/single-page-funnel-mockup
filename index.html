@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rohit Sujanani — Counselling &amp; Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Karla:ital,wght@0,300..700;1,300..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAF6F0;
+  --paper-2:#F2EBE1;
+  --ink:#211F1C;
+  --ink-soft:#4A463F;
+  --ink-mute:#7C766C;
+  --clay:#B25E42;
+  --clay-deep:#8E462F;
+  --sage:#5E6F5E;
+  --line:#DED4C6;
+  --shadow:0 1px 2px rgba(33,31,28,.04), 0 12px 32px -12px rgba(33,31,28,.13);
+  --r:2px;
+  --maxw:1180px;
+  --serif:'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --sans:'Karla', 'Helvetica Neue', Helvetica, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:17px; line-height:1.65;
+  font-weight:400; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* paper grain */
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:9998; opacity:.32;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+img{max-width:100%; display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; line-height:1.08; letter-spacing:-.018em; font-variation-settings:"SOFT" 30,"WONK" 1}
+p{margin:0}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px}
+.narrow{max-width:760px}
+
+/* ── shared bits ───────────────────────────── */
+.eyebrow{
+  font-size:11.5px; letter-spacing:.22em; text-transform:uppercase;
+  font-weight:600; color:var(--clay); display:flex; align-items:center; gap:12px;
+}
+.eyebrow::before{content:""; width:26px; height:1px; background:var(--clay); opacity:.55; flex:none}
+.sec-num{
+  font-family:var(--serif); font-size:12px; letter-spacing:.16em; color:var(--ink-mute);
+  font-feature-settings:"tnum"; text-transform:uppercase;
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  font-family:var(--sans); font-size:14.5px; font-weight:600; letter-spacing:.02em;
+  padding:15px 30px; border-radius:var(--r); border:1px solid transparent;
+  text-decoration:none; cursor:pointer; transition:.28s cubic-bezier(.4,0,.2,1);
+  white-space:nowrap;
+}
+.btn-primary{background:var(--clay); color:#FFF9F3; box-shadow:0 8px 20px -10px rgba(142,70,47,.7)}
+.btn-primary:hover{background:var(--clay-deep); transform:translateY(-2px); box-shadow:0 14px 26px -12px rgba(142,70,47,.75)}
+.btn-ghost{border-color:var(--line); color:var(--ink); background:transparent}
+.btn-ghost:hover{border-color:var(--ink); background:rgba(33,31,28,.03)}
+.btn-sm{padding:11px 22px; font-size:13.5px}
+.btn .short{display:none}
+
+.ph-tag{
+  position:absolute; top:12px; left:12px; z-index:3;
+  font-family:var(--sans); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase;
+  font-weight:700; color:#fff; background:rgba(33,31,28,.62); padding:5px 9px; border-radius:2px;
+  backdrop-filter:blur(4px);
+}
+.imgph{
+  position:relative; overflow:hidden; background:
+    radial-gradient(120% 90% at 20% 12%, #D9C7B4 0%, transparent 60%),
+    radial-gradient(100% 100% at 85% 90%, #9FAE9C 0%, transparent 58%),
+    linear-gradient(160deg,#E6D9C8,#C9B9A6);
+}
+.imgph::after{
+  content:""; position:absolute; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+
+/* ── header ────────────────────────────────── */
+header{
+  position:sticky; top:0; z-index:900; background:rgba(250,246,240,.86);
+  backdrop-filter:blur(14px) saturate(1.2);
+  border-bottom:1px solid transparent; transition:border-color .3s, box-shadow .3s;
+}
+header.stuck{border-bottom-color:var(--line); box-shadow:0 6px 22px -18px rgba(33,31,28,.5)}
+.hd{display:flex; align-items:center; justify-content:space-between; gap:28px; padding-top:17px; padding-bottom:17px}
+.mark{display:flex; flex-direction:column; line-height:1; text-decoration:none}
+.mark b{font-family:var(--serif); font-size:20.5px; font-weight:500; letter-spacing:-.01em}
+.mark span{font-size:9.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--ink-mute); margin-top:6px}
+nav{display:flex; gap:32px; align-items:center}
+nav a{font-size:14.5px; text-decoration:none; color:var(--ink-soft); position:relative; padding:4px 0; transition:color .2s}
+nav a::after{content:""; position:absolute; left:0; bottom:0; height:1px; width:0; background:var(--clay); transition:width .3s}
+nav a:hover{color:var(--ink)} nav a:hover::after{width:100%}
+.hd-cta{display:flex; align-items:center; gap:18px}
+.burger{display:none; background:none; border:0; padding:6px; cursor:pointer}
+.burger i{display:block; width:22px; height:1.5px; background:var(--ink); margin:5px 0}
+
+/* ── hero ──────────────────────────────────── */
+.hero{position:relative; padding:96px 0 84px; overflow:hidden}
+.hero::before{
+  content:""; position:absolute; top:-360px; right:-260px; width:820px; height:820px; border-radius:50%;
+  background:radial-gradient(circle, rgba(178,94,66,.10) 0%, rgba(178,94,66,0) 66%);
+  pointer-events:none;
+}
+.hero-grid{display:grid; grid-template-columns:1.08fr .92fr; gap:76px; align-items:center}
+.hero h1{font-size:clamp(46px,5.6vw,74px); margin:26px 0 0; font-weight:300}
+.hero h1 em{font-style:italic; color:var(--clay); font-weight:400}
+.hero .lede{margin-top:26px; font-size:19px; line-height:1.72; color:var(--ink-soft); max-width:33em}
+.hero-cta{display:flex; gap:14px; margin-top:38px; flex-wrap:wrap}
+.hero-note{margin-top:22px; font-size:13.5px; color:var(--ink-mute); display:flex; align-items:center; gap:8px}
+.hero-note svg{flex:none}
+.portrait{position:relative}
+.portrait .imgph{aspect-ratio:4/5; border-radius:200px 200px var(--r) var(--r)}
+.portrait .ph-tag{top:76px; left:50%; transform:translateX(-50%); white-space:nowrap}
+.portrait-card{
+  position:absolute; left:-38px; bottom:38px; background:var(--paper); border:1px solid var(--line);
+  padding:17px 22px; box-shadow:var(--shadow); border-radius:var(--r); max-width:238px;
+}
+.portrait-card strong{display:block; font-family:var(--serif); font-size:16.5px; font-weight:500}
+.portrait-card span{display:block; font-size:12.5px; color:var(--ink-mute); margin-top:5px; line-height:1.5}
+
+/* ── trust bar ─────────────────────────────── */
+.trust{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--paper-2)}
+.trust-in{display:flex; align-items:center; justify-content:space-between; gap:20px; padding:24px 0; flex-wrap:wrap}
+.trust-item{display:flex; align-items:center; gap:11px; font-size:13px; color:var(--ink-soft); letter-spacing:.03em}
+.trust-item b{font-weight:600; color:var(--ink)}
+.dotsep{width:4px; height:4px; border-radius:50%; background:var(--clay); opacity:.5; flex:none}
+
+/* ── sections ──────────────────────────────── */
+section{position:relative}
+.pad{padding:104px 0}
+.sec-head{display:flex; gap:64px; align-items:flex-start; margin-bottom:56px}
+.sec-head .sec-num{padding-top:14px; flex:none; width:132px; white-space:nowrap}
+.sec-head h2{font-size:clamp(32px,3.5vw,45px); font-weight:300; max-width:16em}
+.sec-head .sub{margin-top:18px; color:var(--ink-soft); max-width:36em; font-size:17px}
+
+/* pain cards */
+.pains{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line)}
+.pain{background:var(--paper); padding:38px 36px; transition:background .3s}
+.pain:hover{background:var(--paper-2)}
+.pain h3{font-size:21px; font-weight:400; margin-bottom:11px}
+.pain p{font-size:15.5px; color:var(--ink-soft); line-height:1.7}
+.pain .pn{font-family:var(--serif); font-size:12px; color:var(--clay); letter-spacing:.1em; display:block; margin-bottom:16px}
+
+/* steps */
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:46px; counter-reset:s}
+.step{position:relative; padding-top:34px; border-top:1px solid var(--line)}
+.step::before{
+  counter-increment:s; content:"0" counter(s);
+  position:absolute; top:-15px; left:0; background:var(--paper); padding-right:14px;
+  font-family:var(--serif); font-size:26px; color:var(--clay); font-weight:300; line-height:1;
+}
+.step h3{font-size:22px; font-weight:400; margin-bottom:12px}
+.step p{font-size:15.5px; color:var(--ink-soft)}
+
+/* services */
+.svc{display:grid; grid-template-columns:repeat(3,1fr); gap:26px}
+.svc-card{
+  border:1px solid var(--line); background:var(--paper); padding:34px 32px 32px;
+  display:flex; flex-direction:column; transition:.3s; border-radius:var(--r);
+}
+.svc-card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:#CBBCA8}
+.svc-card.feature{background:var(--ink); color:#F3EDE4; border-color:var(--ink)}
+.svc-card.feature .price,.svc-card.feature h3{color:#FBF6EF}
+.svc-card.feature p,.svc-card.feature li{color:#C3BBAF}
+.svc-card.feature .btn-ghost{border-color:rgba(255,255,255,.28); color:#FBF6EF}
+.svc-tag{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--clay); font-weight:700; margin-bottom:18px}
+.svc-card.feature .svc-tag{color:#E09B7F}
+.svc-card h3{font-size:25px; font-weight:400; margin-bottom:10px}
+.svc-card>p{font-size:15px; color:var(--ink-soft); margin-bottom:22px}
+.price{font-family:var(--serif); font-size:19px; margin-bottom:22px; padding-bottom:22px; border-bottom:1px solid var(--line)}
+.svc-card.feature .price{border-bottom-color:rgba(255,255,255,.16)}
+.price small{font-family:var(--sans); font-size:13px; color:var(--ink-mute); font-weight:400}
+.svc-card.feature .price small{color:#A79E92}
+.svc ul{list-style:none; padding:0; margin:0 0 28px; flex:1}
+.svc li{font-size:14.5px; color:var(--ink-soft); padding-left:24px; position:relative; margin-bottom:11px; line-height:1.55}
+.svc li::before{content:""; position:absolute; left:0; top:9px; width:9px; height:1.5px; background:var(--clay)}
+
+/* about */
+.about{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.about-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:74px; align-items:center}
+.about .imgph{aspect-ratio:1/1.14; border-radius:var(--r)}
+.about h2{font-size:clamp(30px,3.2vw,42px); font-weight:300; margin:22px 0 24px}
+.about p{color:var(--ink-soft); margin-bottom:17px; font-size:16.5px}
+.creds{list-style:none; padding:22px 0 0; margin:26px 0 0; border-top:1px solid var(--line)}
+.creds li{font-size:14.5px; color:var(--ink-soft); padding-left:26px; position:relative; margin-bottom:10px}
+.creds li::before{content:"✓"; position:absolute; left:0; color:var(--sage); font-size:13px}
+
+/* testimonials */
+.tst{display:grid; grid-template-columns:repeat(3,1fr); gap:26px}
+.tst blockquote{
+  margin:0; background:var(--paper); border:1px solid var(--line); padding:34px 32px;
+  position:relative; border-radius:var(--r); display:flex; flex-direction:column;
+}
+.tst blockquote::before{
+  content:"”"; position:absolute; top:8px; right:22px; font-family:var(--serif);
+  font-size:78px; color:var(--clay); opacity:.16; line-height:1;
+}
+.stars{color:var(--clay); font-size:13px; letter-spacing:3px; margin-bottom:18px}
+.tst p{font-family:var(--serif); font-size:18.5px; line-height:1.6; font-weight:300; flex:1; font-style:italic}
+.tst cite{display:block; margin-top:24px; font-style:normal; font-size:13px; color:var(--ink-mute); letter-spacing:.04em}
+.tst cite b{display:block; color:var(--ink); font-weight:600; font-style:normal; margin-bottom:3px; letter-spacing:0; font-size:14px}
+
+/* booking + form */
+.book{background:var(--ink); color:#EFE8DE; border-radius:var(--r)}
+.book-grid{display:grid; grid-template-columns:1fr 1.06fr}
+.book-left{padding:66px 58px}
+.book-left .eyebrow{color:#E09B7F} .book-left .eyebrow::before{background:#E09B7F}
+.book-left h2{font-size:clamp(30px,3.2vw,42px); color:#FBF6EF; font-weight:300; margin:22px 0 20px}
+.book-left>p{color:#B8B0A4; font-size:16.5px; margin-bottom:30px}
+.bk-list{list-style:none; padding:0; margin:0}
+.bk-list li{font-size:14.5px; color:#C3BBAF; padding-left:26px; position:relative; margin-bottom:13px}
+.bk-list li::before{content:""; position:absolute; left:0; top:10px; width:11px; height:1.5px; background:#E09B7F}
+.cal{
+  background:#FBF7F1; margin:14px; border-radius:var(--r); padding:34px 34px 30px;
+  position:relative; color:var(--ink); border:1px dashed #C9B9A6;
+}
+.cal-hd{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px}
+.cal-hd strong{font-family:var(--serif); font-size:19px; font-weight:500}
+.cal-hd span{font-size:12px; color:var(--ink-mute)}
+.cal-days{display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-bottom:8px}
+.cal-days span{text-align:center; font-size:10px; letter-spacing:.1em; color:var(--ink-mute); text-transform:uppercase}
+.cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:6px}
+.cal-grid i{
+  aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-style:normal;
+  font-size:13.5px; border-radius:2px; color:var(--ink-mute); border:1px solid transparent;
+}
+.cal-grid i.avail{background:#fff; border-color:var(--line); color:var(--ink); font-weight:600; cursor:pointer; transition:.2s}
+.cal-grid i.avail:hover{background:var(--clay); color:#fff; border-color:var(--clay)}
+.cal-grid i.on{background:var(--clay); border-color:var(--clay); color:#fff; font-weight:600}
+.slots{display:flex; gap:8px; flex-wrap:wrap; margin-top:24px; padding-top:22px; border-top:1px solid var(--line)}
+.slots b{width:100%; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-mute); font-weight:600; margin-bottom:4px}
+.slot{border:1px solid var(--line); background:#fff; padding:9px 15px; font-size:13.5px; border-radius:2px; font-family:var(--sans); cursor:pointer; transition:.2s}
+.slot:hover{border-color:var(--clay); color:var(--clay)}
+.slot.on{background:var(--clay); color:#fff; border-color:var(--clay)}
+
+/* enquiry form */
+.form-wrap{display:grid; grid-template-columns:.9fr 1.1fr; gap:74px; align-items:start}
+.frm{display:grid; gap:19px}
+.row2{display:grid; grid-template-columns:1fr 1fr; gap:19px}
+.fld label{display:block; font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-mute); font-weight:600; margin-bottom:9px}
+.fld input,.fld select,.fld textarea{
+  width:100%; font-family:var(--sans); font-size:16px; color:var(--ink);
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r);
+  padding:14px 16px; transition:.24s; outline:none;
+}
+.fld textarea{min-height:118px; resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--clay); background:#fff; box-shadow:0 0 0 3px rgba(178,94,66,.1)}
+.consent{
+  display:flex; gap:14px; align-items:flex-start; background:var(--paper-2);
+  border:1px solid var(--line); border-left:3px solid var(--sage); padding:18px 20px; border-radius:var(--r);
+}
+.consent input{margin:3px 0 0; width:17px; height:17px; accent-color:var(--sage); flex:none}
+.consent label{font-size:13.5px; line-height:1.6; color:var(--ink-soft)}
+.consent a{color:var(--clay); text-underline-offset:3px}
+.frm-note{font-size:12.5px; color:var(--ink-mute); line-height:1.6; display:flex; gap:9px; align-items:flex-start}
+.frm-note svg{flex:none; margin-top:2px}
+
+.gdpr-panel{border:1px solid var(--line); background:var(--paper-2); padding:34px 32px; border-radius:var(--r)}
+.gdpr-panel h3{font-size:22px; font-weight:400; margin-bottom:16px}
+.gdpr-panel ul{list-style:none; padding:0; margin:0}
+.gdpr-panel li{font-size:14.5px; color:var(--ink-soft); padding-left:28px; position:relative; margin-bottom:14px; line-height:1.6}
+.gdpr-panel li::before{
+  content:""; position:absolute; left:3px; top:9px; width:7px; height:7px;
+  background:var(--sage); transform:rotate(45deg);
+}
+
+/* faq */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  list-style:none; cursor:pointer; padding:26px 40px 26px 0; position:relative;
+  font-family:var(--serif); font-size:21px; font-weight:400; transition:color .2s;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+"; position:absolute; right:6px; top:50%; transform:translateY(-50%);
+  font-size:24px; color:var(--clay); font-family:var(--sans); font-weight:300; transition:transform .3s;
+}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq summary:hover{color:var(--clay)}
+.faq .ans{padding:0 60px 28px 0; color:var(--ink-soft); font-size:16px}
+
+/* footer */
+footer{background:var(--ink); color:#A79E92; padding:74px 0 30px; font-size:14px}
+.ft-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr 1.2fr; gap:48px; padding-bottom:52px; border-bottom:1px solid rgba(255,255,255,.11)}
+.ft-grid h4{color:#FBF6EF; font-family:var(--sans); font-size:11px; letter-spacing:.2em; text-transform:uppercase; font-weight:700; margin-bottom:20px}
+.ft-grid a{display:block; color:#A79E92; text-decoration:none; margin-bottom:11px; transition:color .2s}
+.ft-grid a:hover{color:#E09B7F}
+.ft-mark>b{font-family:var(--serif); font-size:22px; color:#FBF6EF; font-weight:500; display:block}
+.ft-mark>span{font-size:9.5px; letter-spacing:.26em; text-transform:uppercase; margin-top:8px; display:block}
+.ft-mark>p{margin-top:20px; line-height:1.7; max-width:27em; font-size:13.5px}
+.ft-btm{display:flex; justify-content:space-between; gap:24px; padding-top:26px; font-size:12.5px; flex-wrap:wrap}
+.ft-btm a{color:#A79E92; text-decoration:none; margin-left:22px}
+.ft-btm a:hover{color:#E09B7F}
+.crisis{
+  background:rgba(224,155,127,.09); border:1px solid rgba(224,155,127,.28); border-radius:var(--r);
+  padding:16px 20px; margin-top:22px; font-size:13px; color:#D8CFC3; line-height:1.6;
+}
+.crisis b{color:#E09B7F; font-family:var(--sans); font-size:13px; font-weight:700; display:inline}
+
+/* cookie banner */
+.cookie{
+  position:fixed; left:24px; bottom:24px; z-index:9999; max-width:420px;
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r);
+  box-shadow:0 20px 50px -18px rgba(33,31,28,.42); padding:26px 26px 22px;
+}
+.cookie h4{font-size:19px; font-weight:400; margin-bottom:10px}
+.cookie p{font-size:13.5px; color:var(--ink-soft); line-height:1.62; margin-bottom:18px}
+.cookie p a{color:var(--clay); text-underline-offset:3px}
+.ck-btns{display:flex; gap:9px; flex-wrap:wrap}
+.ck-btns .btn{flex:1; min-width:112px; padding:12px 14px; font-size:13.5px}
+.ck-pref{
+  display:block; width:100%; margin-top:12px; background:none; border:0; cursor:pointer;
+  font-family:var(--sans); font-size:12.5px; color:var(--ink-mute); text-decoration:underline;
+  text-underline-offset:3px; padding:4px;
+}
+
+/* reveal */
+.rv{opacity:0; transform:translateY(22px); transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1; transform:none}
+
+@media(max-width:1000px){
+  .hero-grid,.about-grid,.form-wrap,.book-grid{grid-template-columns:1fr; gap:46px}
+  .steps,.svc,.tst{grid-template-columns:1fr}
+  .pains{grid-template-columns:1fr}
+  .sec-head{flex-direction:column; gap:14px}
+  .ft-grid{grid-template-columns:1fr 1fr; gap:36px}
+  nav{display:none}
+  .burger{display:block}
+  .portrait-card{left:auto; right:16px; bottom:16px}
+  .book-left{padding:44px 32px}
+  .pad{padding:74px 0}
+  .wrap{padding:0 22px}
+  .cookie{left:12px; right:12px; bottom:12px; max-width:none}
+}
+@media(max-width:640px){
+  .hd{padding-top:12px; padding-bottom:12px; gap:12px}
+  .mark b{font-size:17px; white-space:nowrap}
+  .mark span{display:none}
+  .hd-cta{gap:8px}
+  .hd-cta .btn-sm{padding:10px 14px; font-size:12.5px}
+  .hd-cta .btn-sm .full{display:none}
+  .hd-cta .btn-sm .short{display:inline}
+  .hero{padding:52px 0 60px}
+  .hero h1{font-size:clamp(38px,10.4vw,50px)}
+  .hero .lede{font-size:17px; margin-top:20px}
+  .hero-cta{margin-top:30px}
+  .hero-cta .btn{width:100%}
+  .portrait-card{position:static; margin-top:-30px; margin-left:16px; max-width:250px}
+  .trust-in{gap:10px 22px; padding:20px 0}
+  .pain{padding:30px 26px}
+  .book-left{padding:38px 26px}
+  .cal{padding:24px 20px}
+  .row2{grid-template-columns:1fr}
+  .faq summary{font-size:19px; padding-right:34px}
+  .faq .ans{padding-right:18px}
+  .ft-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap hd">
+    <a class="mark" href="#top">
+      <b>Rohit Sujanani</b>
+      <span>Counselling &amp; Coaching</span>
+    </a>
+    <nav>
+      <a href="#help">How I help</a>
+      <a href="#process">The process</a>
+      <a href="#work">Ways to work</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="hd-cta">
+      <a class="btn btn-primary btn-sm" href="#book"><span class="full">Book a free call</span><span class="short">Book a call</span></a>
+      <button class="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow rv">Counselling &amp; coaching &nbsp;·&nbsp; [City], UK &amp; online</div>
+      <h1 class="rv">A quieter place to<br>work out what<br><em>comes next.</em></h1>
+      <p class="lede rv">[Placeholder copy — your words go here.] Confidential one-to-one therapy and coaching for people carrying more than they let on. No waiting lists, no jargon, and no pressure to have it figured out before you arrive.</p>
+      <div class="hero-cta rv">
+        <a class="btn btn-primary" href="#book">Book a free 20-minute call</a>
+        <a class="btn btn-ghost" href="#help">See how I help</a>
+      </div>
+      <div class="hero-note rv">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7C766C" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Confidential · [Professional body] registered · UK GDPR compliant
+      </div>
+    </div>
+    <div class="portrait rv">
+      <div class="imgph"><span class="ph-tag">Placeholder — your photo</span></div>
+      <div class="portrait-card">
+        <strong>[X] years' practice</strong>
+        <span>[Number] people supported across [modality] therapy and coaching</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST BAR ══ -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><span class="dotsep"></span><b>[BACP / UKCP / NCPS]</b> registered</div>
+    <div class="trust-item"><span class="dotsep"></span><b>ICO</b> registered · Ref [number]</div>
+    <div class="trust-item"><span class="dotsep"></span>Insured with <b>[insurer]</b></div>
+    <div class="trust-item"><span class="dotsep"></span>Sessions <b>online &amp; in person</b></div>
+    <div class="trust-item"><span class="dotsep"></span>Reply within <b>[24] hours</b></div>
+  </div>
+</div>
+
+<!-- ══ HELP ══ -->
+<section class="pad" id="help">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">01 / Fit</div>
+      <div>
+        <h2>You don't need to be in crisis to deserve support.</h2>
+        <p class="sub">[Placeholder] Most people who come to me are functioning perfectly well on the outside. Here's what usually brings them through the door.</p>
+      </div>
+    </div>
+    <div class="pains rv">
+      <div class="pain"><span class="pn">— 01</span><h3>Anxiety that never quite switches off</h3><p>[Placeholder copy.] The low hum in the background of everything. Sleep that doesn't restore, a mind that runs ahead of you, a body that's forgotten how to settle.</p></div>
+      <div class="pain"><span class="pn">— 02</span><h3>Burnout and the career you've outgrown</h3><p>[Placeholder copy.] You're good at the job. You just can't remember why you wanted it. We work out what's actually yours to carry and what isn't.</p></div>
+      <div class="pain"><span class="pn">— 03</span><h3>Relationships that keep repeating</h3><p>[Placeholder copy.] The same argument, the same distance, the same ending in a different name. Patterns are learnable — which means they're changeable.</p></div>
+      <div class="pain"><span class="pn">— 04</span><h3>Grief, change and losing your footing</h3><p>[Placeholder copy.] Bereavement, separation, a diagnosis, a move. When the ground shifts, having somewhere steady to think out loud matters.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESS ══ -->
+<section class="pad" id="process" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">02 / Process</div>
+      <div>
+        <h2>Three steps. No commitment until you're ready.</h2>
+        <p class="sub">[Placeholder] The first conversation is free and there is nothing to prepare.</p>
+      </div>
+    </div>
+    <div class="steps rv">
+      <div class="step"><h3>A free 20-minute call</h3><p>[Placeholder.] We talk about what's going on and whether I'm the right person. If I'm not, I'll say so and point you somewhere better.</p></div>
+      <div class="step"><h3>Your first session</h3><p>[Placeholder.] [50] minutes, online or at [location]. We agree what you want to be different and how we'll know when it is.</p></div>
+      <div class="step"><h3>Ongoing work at your pace</h3><p>[Placeholder.] Weekly or fortnightly, reviewed every [six] sessions. You can pause or stop at any point, no explanation needed.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section class="pad" id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">03 / Ways to work</div>
+      <div>
+        <h2>Ways we can work together</h2>
+        <p class="sub">[All prices below are placeholders — send me yours and I'll drop them in.]</p>
+      </div>
+    </div>
+    <div class="svc rv">
+      <div class="svc-card">
+        <div class="svc-tag">Counselling</div>
+        <h3>One-to-one therapy</h3>
+        <p>[Placeholder.] Open-ended, exploratory work for anxiety, low mood, grief and trauma.</p>
+        <div class="price">£[00] <small>/ [50]-min session</small></div>
+        <ul><li>Weekly or fortnightly</li><li>Online or in person at [location]</li><li>[Modality] informed</li><li>Reviewed every [six] sessions</li></ul>
+        <a class="btn btn-ghost" href="#book">Book a free call</a>
+      </div>
+      <div class="svc-card feature">
+        <div class="svc-tag">Most chosen</div>
+        <h3>The [8]-week reset</h3>
+        <p>[Placeholder.] A structured block for a specific thing you want to shift, with a clear beginning and end.</p>
+        <div class="price">£[000] <small>/ [8] sessions</small></div>
+        <ul><li>Weekly [50]-minute sessions</li><li>Written plan after session one</li><li>Between-session email support</li><li>Progress review at week [4]</li></ul>
+        <a class="btn btn-ghost" href="#book">Book a free call</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Coaching</div>
+        <h3>Career &amp; life coaching</h3>
+        <p>[Placeholder.] Forward-facing work on direction, confidence, boundaries and decisions.</p>
+        <div class="price">£[00] <small>/ [60]-min session</small></div>
+        <ul><li>Goal-led, action between sessions</li><li>Online, evenings available</li><li>Individual or [team] packages</li><li>Buy in blocks of [six]</li></ul>
+        <a class="btn btn-ghost" href="#book">Book a free call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="about pad" id="about">
+  <div class="wrap about-grid">
+    <div class="rv"><div class="imgph"><span class="ph-tag">Placeholder — your photo</span></div></div>
+    <div class="rv">
+      <div class="eyebrow">04 / About</div>
+      <h2>Hello — I'm Rohit.</h2>
+      <p>[Placeholder biography. Every sentence here is written by me as a stand-in and should be replaced with your own words — I have not invented any qualification, date or figure.]</p>
+      <p>[Two or three short paragraphs work best here: what drew you to this work, how you actually sit with people, and one honest human detail. People book the person, not the credentials — but the credentials are what make them feel safe enough to.]</p>
+      <ul class="creds">
+        <li>[Qualification], [Institution], [Year]</li>
+        <li>Registered member of [professional body] — Reg. [number]</li>
+        <li>Trained in [modality] and [modality]</li>
+        <li>In regular clinical supervision, as required by [body]</li>
+        <li>Enhanced DBS checked · Professionally insured</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">05 / Words</div>
+      <div>
+        <h2>What people have said</h2>
+        <p class="sub"><b>All three quotes below are placeholders I wrote to show the layout.</b> Nothing here is a real client. Send me your own consented testimonials and I'll swap them in — initials only is the safest convention for therapeutic work.</p>
+      </div>
+    </div>
+    <div class="tst rv">
+      <blockquote>
+        <div class="stars">★★★★★</div>
+        <p>“[Placeholder testimonial — replace with a real, consented client quote.]”</p>
+        <cite><b>[Client initials]</b>[Type of work] · [Year]</cite>
+      </blockquote>
+      <blockquote>
+        <div class="stars">★★★★★</div>
+        <p>“[Placeholder testimonial — replace with a real, consented client quote.]”</p>
+        <cite><b>[Client initials]</b>[Type of work] · [Year]</cite>
+      </blockquote>
+      <blockquote>
+        <div class="stars">★★★★★</div>
+        <p>“[Placeholder testimonial — replace with a real, consented client quote.]”</p>
+        <cite><b>[Client initials]</b>[Type of work] · [Year]</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOOKING ══ -->
+<section class="pad" id="book" style="padding-top:0">
+  <div class="wrap">
+    <div class="book rv">
+      <div class="book-grid">
+        <div class="book-left">
+          <div class="eyebrow">06 / Booking</div>
+          <h2>Book your free 20-minute call</h2>
+          <p>[Placeholder.] No cost, no obligation, and nothing to prepare. A short conversation to see whether working together makes sense.</p>
+          <ul class="bk-list">
+            <li>Choose a time that suits you — instantly confirmed</li>
+            <li>Held over [phone / video], your choice</li>
+            <li>Automatic reminders by email [and SMS]</li>
+            <li>Reschedule or cancel yourself, any time</li>
+            <li>Syncs straight to your own calendar</li>
+          </ul>
+        </div>
+        <div class="cal">
+          <span class="ph-tag" style="background:rgba(178,94,66,.9)">Live booking calendar sits here</span>
+          <div class="cal-hd" style="margin-top:16px"><strong>October 2026</strong><span>All times [GMT/BST]</span></div>
+          <div class="cal-days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+          <div class="cal-grid">
+            <i></i><i></i><i></i><i>1</i><i>2</i><i>3</i><i>4</i>
+            <i>5</i><i class="avail">6</i><i class="avail">7</i><i>8</i><i class="avail">9</i><i>10</i><i>11</i>
+            <i class="avail">12</i><i class="on">13</i><i class="avail">14</i><i class="avail">15</i><i>16</i><i>17</i><i>18</i>
+            <i class="avail">19</i><i>20</i><i class="avail">21</i><i class="avail">22</i><i class="avail">23</i><i>24</i><i>25</i>
+            <i>26</i><i class="avail">27</i><i class="avail">28</i><i>29</i><i class="avail">30</i><i>31</i><i></i>
+          </div>
+          <div class="slots">
+            <b>Tuesday 13 October</b>
+            <button class="slot">09:00</button>
+            <button class="slot on">10:30</button>
+            <button class="slot">13:00</button>
+            <button class="slot">17:30</button>
+            <button class="slot">19:00</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ENQUIRY FORM ══ -->
+<section class="pad" style="padding-top:0">
+  <div class="wrap form-wrap">
+    <div class="rv">
+      <div class="eyebrow">07 / Enquire</div>
+      <h2 style="font-size:38px; font-weight:300; margin:22px 0 18px">Or send a message instead</h2>
+      <p style="color:var(--ink-soft); margin-bottom:30px">[Placeholder.] If a call feels like too much right now, write instead. I read every message myself and reply within [24] hours.</p>
+      <div class="gdpr-panel">
+        <h3>How your data is handled</h3>
+        <ul>
+          <li>Your enquiry is sent straight to [your inbox] — it is <b>not stored in the website database</b>, so there is no pot of client data sitting on the server to be breached.</li>
+          <li>Consent is explicit and unticked by default, with the privacy notice one click away — as UK GDPR requires.</li>
+          <li>Health and therapy enquiries are <b>special category data</b>, so the form asks for the minimum needed to reply and nothing more.</li>
+          <li>Every submission is logged with its consent wording, timestamp and IP so you can evidence consent if you are ever asked.</li>
+          <li>Spam is filtered without Google reCAPTCHA, which avoids sending visitor data to the US.</li>
+          <li>The site runs on TLS end to end, with fonts and scripts served from your own server rather than third-party CDNs.</li>
+        </ul>
+      </div>
+    </div>
+
+    <form class="frm rv" onsubmit="return false">
+      <div class="row2">
+        <div class="fld"><label for="fn">First name</label><input id="fn" type="text" placeholder="Your first name"></div>
+        <div class="fld"><label for="ln">Last name</label><input id="ln" type="text" placeholder="Your last name"></div>
+      </div>
+      <div class="row2">
+        <div class="fld"><label for="em">Email</label><input id="em" type="email" placeholder="you@example.co.uk"></div>
+        <div class="fld"><label for="ph">Phone <span style="text-transform:none; letter-spacing:0">(optional)</span></label><input id="ph" type="tel" placeholder="07…"></div>
+      </div>
+      <div class="fld"><label for="sv">What are you interested in?</label>
+        <select id="sv">
+          <option>Free 20-minute introductory call</option>
+          <option>One-to-one counselling</option>
+          <option>The [8]-week reset</option>
+          <option>Career &amp; life coaching</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="fld"><label for="ms">What would you like to tell me?</label><textarea id="ms" placeholder="As much or as little as you like — there is no wrong way to start."></textarea></div>
+      <div class="consent">
+        <input type="checkbox" id="cs">
+        <label for="cs">I consent to [Practice name] holding and using the details above solely to respond to my enquiry. I understand this may include information about my health. I can withdraw consent at any time. <a href="#">Privacy notice</a></label>
+      </div>
+      <div class="frm-note">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7C766C" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>Sent over an encrypted connection. Not stored on the website. Deleted after [12] months unless you become a client. This form is <b>not for emergencies</b> — see the note at the foot of the page.</span>
+      </div>
+      <button class="btn btn-primary" style="justify-self:start; margin-top:4px">Send my enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="pad" id="faq" style="background:var(--paper-2); border-top:1px solid var(--line)">
+  <div class="wrap narrow">
+    <div class="eyebrow rv" style="margin-bottom:22px">08 / Questions</div>
+    <h2 class="rv" style="font-size:clamp(30px,3.2vw,42px); font-weight:300; margin-bottom:44px">Before you get in touch</h2>
+    <div class="faq rv">
+      <details open><summary>Is what I say confidential?</summary><div class="ans">[Placeholder answer.] Yes, with the small number of legal exceptions your professional body requires you to name — set those out plainly here. People decide whether to book on this answer, so it is worth writing carefully.</div></details>
+      <details><summary>How long will I need to come?</summary><div class="ans">[Placeholder answer.] Explain your typical range and that it is reviewed rather than fixed.</div></details>
+      <details><summary>Do you offer sessions online?</summary><div class="ans">[Placeholder answer.] Confirm the platform you use and that it is a secure one.</div></details>
+      <details><summary>What if I need to cancel?</summary><div class="ans">[Placeholder answer.] State your notice period and what happens to the fee.</div></details>
+      <details><summary>Do you take insurance or EAP referrals?</summary><div class="ans">[Placeholder answer.] List the providers you are registered with, if any.</div></details>
+      <details><summary>I'm not sure therapy or coaching is right for me.</summary><div class="ans">[Placeholder answer.] This is the objection-handling one — reassure and point at the free call.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-mark">
+        <b>Rohit Sujanani</b><span>Counselling &amp; Coaching</span>
+        <p>[Placeholder.] One-to-one therapy and coaching, online across the UK and in person in [City].</p>
+        <div class="crisis"><b>If you need help now:</b> this website is not monitored and is not for emergencies. Call <b>999</b>, contact <b>NHS 111</b>, or call <b>Samaritans free on 116 123</b>, any time.</div>
+      </div>
+      <div><h4>Explore</h4><a href="#help">How I help</a><a href="#process">The process</a><a href="#work">Ways to work</a><a href="#about">About</a><a href="#faq">FAQ</a></div>
+      <div><h4>Legal</h4><a href="#">Privacy notice</a><a href="#">Cookie policy</a><a href="#">Terms of service</a><a href="#">Complaints procedure</a><a href="#">Accessibility</a></div>
+      <div><h4>Practice</h4>
+        <a href="#book">Book a free call</a>
+        <a href="#">[Professional body] profile</a>
+        <p style="margin-top:16px; line-height:1.7; font-size:13px">[Practice name]<br>[Address line]<br>[City], [Postcode]<br><br>ICO registration [number]</p>
+      </div>
+    </div>
+    <div class="ft-btm">
+      <span>© 2026 [Practice name]. All rights reserved.</span>
+      <span><a href="#">Privacy</a><a href="#">Cookies</a><a href="#" id="ckreopen">Cookie preferences</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ COOKIE BANNER ══ -->
+<div class="cookie" id="ck">
+  <h4>Cookies on this site</h4>
+  <p>We use essential cookies to make the site work. We'd also like to set optional analytics cookies to understand how the site is used. <b>Nothing optional is set until you accept</b> — and rejecting is as easy as accepting. <a href="#">Read our cookie policy</a></p>
+  <div class="ck-btns">
+    <button class="btn btn-primary" onclick="ckClose()">Accept all</button>
+    <button class="btn btn-ghost" onclick="ckClose()">Reject optional</button>
+  </div>
+  <button class="ck-pref" onclick="ckClose()">Manage preferences</button>
+</div>
+
+<script>
+function ckClose(){document.getElementById('ck').style.display='none'}
+document.getElementById('ckreopen').addEventListener('click',function(e){e.preventDefault();document.getElementById('ck').style.display='block'});
+addEventListener('scroll',function(){document.getElementById('hdr').classList.toggle('stuck',scrollY>10)});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(i%4*70)+'ms';io.observe(el)});
+document.querySelectorAll('.slot').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.slot').forEach(function(x){x.classList.remove('on')});b.classList.add('on')})});
+document.querySelectorAll('.cal-grid i.avail').forEach(function(d){d.addEventListener('click',function(){document.querySelectorAll('.cal-grid i').forEach(function(x){x.classList.remove('on')});d.classList.add('on');d.classList.add('avail')})});
+</script>
+</body>
+</html>
