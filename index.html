@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rohit Sujanani — Counselling &amp; Coaching</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Design mockup / layout preview only. Not a live website. No data is collected and no form on this page submits anywhere.">
+<title>Design Mockup — Counselling &amp; Coaching Funnel Layout</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Karla:ital,wght@0,300..700;1,300..600&display=swap" rel="stylesheet">
@@ -85,6 +87,20 @@ p{margin:0}
   content:""; position:absolute; inset:0;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
   mix-blend-mode:overlay;
+}
+
+/* ── demo bar ──────────────────────────────── */
+.demobar{background:var(--ink); color:#C3BBAF; position:relative; z-index:901}
+.demobar-in{display:flex; align-items:center; gap:14px; padding-top:10px; padding-bottom:10px}
+.db-pill{
+  flex:none; font-size:9.5px; letter-spacing:.18em; text-transform:uppercase; font-weight:700;
+  color:#211F1C; background:#E09B7F; padding:5px 10px; border-radius:2px;
+}
+.db-txt{font-size:12.5px; line-height:1.5}
+.db-txt b{color:#FBF6EF; font-weight:600}
+@media(max-width:640px){
+  .demobar-in{align-items:flex-start; flex-direction:column; gap:8px}
+  .db-txt{font-size:11.5px}
 }
 
 /* ── header ────────────────────────────────── */
@@ -372,6 +388,13 @@ footer{background:var(--ink); color:#A79E92; padding:74px 0 30px; font-size:14px
 </head>
 <body>
 
+<div class="demobar">
+  <div class="wrap demobar-in">
+    <span class="db-pill">Design mockup</span>
+    <span class="db-txt">Layout preview only — this is <b>not a live website</b>. Nothing on this page submits anywhere and no data is collected. All names, prices, credentials and quotes are placeholders.</span>
+  </div>
+</div>
+
 <header id="hdr">
   <div class="wrap hd">
     <a class="mark" href="#top">
@@ -617,7 +640,7 @@ footer{background:var(--ink); color:#A79E92; padding:74px 0 30px; font-size:14px
       </div>
     </div>
 
-    <form class="frm rv" onsubmit="return false">
+    <form class="frm rv" onsubmit="return false" autocomplete="off" novalidate aria-label="Enquiry form layout preview - inactive">
       <div class="row2">
         <div class="fld"><label for="fn">First name</label><input id="fn" type="text" placeholder="Your first name"></div>
         <div class="fld"><label for="ln">Last name</label><input id="ln" type="text" placeholder="Your last name"></div>
